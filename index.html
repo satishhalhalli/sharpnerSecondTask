@@ -56,10 +56,28 @@
             showUsers(obj);
         }
 
-        function showUsers(obj){
-          const parent=document.getElementById('users');
-          parent.innerHTML=parent.innerHTML + `<li>${obj.name} -- ${obj.email}`;
-        }
+      
+        function showUsers(obj) {
+  const parent = document.getElementById("users");
+  const li = document.createElement("li");
+  const text = document.createTextNode(`${obj.name} -- ${obj.email}`);
+  li.appendChild(text);
+  parent.appendChild(li);
+
+  const deleteButton = document.createElement("button");
+  deleteButton.innerHTML = "Delete";
+  li.appendChild(deleteButton);
+
+  deleteButton.addEventListener("click", () => {
+   
+    localStorage.removeItem("userDatils");
+
+    
+    parent.removeChild(li);
+  });
+}
+
+
     </script>
   </body>
 </html>
