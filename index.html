@@ -65,9 +65,11 @@
   parent.appendChild(li);
 
   const deleteButton = document.createElement("button");
+  const editButton=document.createElement("button");
   deleteButton.innerHTML = "Delete";
+  editButton.innerHTML="Edit";
   li.appendChild(deleteButton);
-
+  li.appendChild(editButton);
   deleteButton.addEventListener("click", () => {
    
     localStorage.removeItem("userDatils");
@@ -75,6 +77,22 @@
     
     parent.removeChild(li);
   });
+
+  editButton.addEventListener("click",()=>{
+    editUser(obj);
+  });
+
+  function editUser(obj) {
+  const nameInput = prompt("Enter new name:", obj.name);
+  const emailInput = prompt("Enter new email:", obj.email);
+
+  if (nameInput !== null && emailInput !== null) {
+    obj.name = nameInput;
+    obj.email = emailInput;
+    localStorage.setItem("userDetails", JSON.stringify(obj));
+    location.reload();
+  }
+}
 }
 
 
