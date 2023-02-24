@@ -53,6 +53,12 @@
             }
             console.log(obj);
             localStorage.setItem('userDatils',JSON.stringify(obj));
+            showUsers(obj);
+        }
+
+        function showUsers(obj){
+          const parent=document.getElementById('users');
+          parent.innerHTML=parent.innerHTML + `<li>${obj.name} -- ${obj.email}`;
         }
     </script>
   </body>
