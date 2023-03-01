@@ -35,7 +35,11 @@
         <li class="item">Item 3</li>
       </ul> -->
     </section>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+
+
+
+
 
     <script>
 
@@ -52,8 +56,16 @@
 
             }
             console.log(obj);
-            localStorage.setItem('userDatils',JSON.stringify(obj));
-            showUsers(obj);
+            axios.post("https://crudcrud.com/api/70d6af5094254552bd7fa7872c290e71/apointmentdata",obj)
+            .then((response)=>{
+              showUsers(response.data);
+              console.log(response)
+            })
+            .catch((err)=>{
+              console.log(err)
+            })
+            //localStorage.setItem('userDatils',JSON.stringify(obj));
+            // showUsers(obj);
         }
 
       
