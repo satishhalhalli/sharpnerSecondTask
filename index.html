@@ -69,6 +69,22 @@
         }
 
       
+        window.addEventListener("DOMContentLoaded" , ()=>{
+      getDataFromApi(); 
+})
+
+function getDataFromApi(){
+   axios.get('https://crudcrud.com/api/70d6af5094254552bd7fa7872c290e71/apointmentdata')
+   .then(response=>{
+      console.log(response.data);
+      for(var j=0;j<res.data.length;j++){
+
+         showNewUserOnScreen(response.data[j]);
+      }
+   })
+   .catch(err =>console.log(err))
+}
+
         function showUsers(obj) {
   const parent = document.getElementById("users");
   const li = document.createElement("li");
