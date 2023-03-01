@@ -105,7 +105,27 @@ function getDataFromApi(){
     
     parent.removeChild(li);
   });
+  
 
+  
+function deleteUser(id){
+
+//localStorage.removeItem(`userdetail${email}`);
+axios.delete(`https://crudcrud.com/api/70d6af5094254552bd7fa7872c290e71/apointmentdata/${id}`)
+.then(res =>{
+    userList.innerHTML =""
+    getDataFromApi();
+  
+})
+.catch(err => console.log(err))
+
+// const childNode = document.getElementById(id);
+
+// userList.removeChild(childNode);
+
+
+
+}
   editButton.addEventListener("click",()=>{
     editUser(obj);
   });
